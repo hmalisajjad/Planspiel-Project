@@ -53,6 +53,12 @@ def stopbuzzer():
     grove.turn_off_buzzer_digitalport(5) #turn off buzzer on d5
     return jsonify({ "message":"stopping" })
 
+#detect a motion
+@app.route('/startmotion', methods=['GET','POST'])
+def stopbuzzer():
+    grove.turn_off_motion_digitalport(6) #start motion on d6
+    return jsonify({ "message":"starting" })
+
 #return light values
 @app.route('/getlight', methods=['GET','POST'])
 def getlight():
