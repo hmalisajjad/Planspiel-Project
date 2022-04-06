@@ -29,7 +29,17 @@ def stopled():
     grove.turn_off_led_digitalport(4) #turn off led on d4
     return jsonify({ "message":"stopping" })
 
+#start a fan
+@app.route('/startfan', methods=['GET','POST'])
+def startfan():
+    grove.turn_on_fan_digitalport(2) #turn on fan on d2
+    return jsonify({ "message":"starting" }) #jsonify take any type and makes a JSON string
 
+#stop a fan
+@app.route('/stopfan', methods=['GET','POST'])
+def stopfan():
+    grove.turn_off_fan_digitalport(2) #turn off fan on d2
+    return jsonify({ "message":"stopping" })
 
 
 #return light values
