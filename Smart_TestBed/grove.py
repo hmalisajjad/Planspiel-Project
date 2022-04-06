@@ -57,6 +57,30 @@ def turn_off_buzzer_digitalport(port):
     grovepi.pinMode(buzzer,"OUTPUT")
     grovepi.digitalWrite(buzzer,0)
     return
+    
+#Turn off the motion sensor
+def turn_on_motion_digitalport(port, port1):
+    grovepi.pinMode(pir_sensor, "INPUT")
+    grovepi.pinMode(buzzer, "OUTPUT")
+
+    while True:
+        try:
+            led = port
+            buzzer = port1
+            # Sense motion, usually human, within the target range
+            if grovepi.digitalRead(pir_sensor):
+                grovepi.digitalWrite(led, 255)
+                grovepi.digitalWrite(buzzer, 255)
+                print
+                'Motion Detected';
+            else:
+                grovepi.digitalWrite(led, 0)
+                grovepi.digitalWrite(buzzer, 0)
+                print
+                '-';
+
+            # if your hold time is less than this, you might not see as many detections
+        time.sleep(.2)
 
 #read temp and humidity
 def read_temp_humidity_sensor_digitalport(port):
