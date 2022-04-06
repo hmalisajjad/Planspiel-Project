@@ -17,19 +17,6 @@ def read_light_sensor_analogueport(port):
         log.error("Error in reading the light sensor")
     return sensor_value
 
-#Turn on the buzzer
-def turn_on_buzzer_digitalport(port):
-    buzzer = port
-    grovepi.pinMode(buzzer,"OUTPUT")
-    grovepi.digitalWrite(buzzer,255)
-    return
-
-#Turn off the buzzer
-def turn_off_buzzer_digitalport(port):
-    buzzer = port
-    grovepi.pinMode(buzzer,"OUTPUT")
-    grovepi.digitalWrite(buzzer,0)
-    return
 #Turn on the led
 def turn_on_led_digitalport(port):
     led = port
@@ -55,6 +42,20 @@ def turn_off_fan_digitalport(port):
     fan = port
     grovepi.pinMode(fan,"OUTPUT")
     grovepi.digitalWrite(fan,0)
+    return
+
+#Turn on the buzzer
+def turn_on_buzzer_digitalport(port):
+    buzzer = port
+    grovepi.pinMode(buzzer,"OUTPUT")
+    grovepi.digitalWrite(buzzer,255)
+    return
+
+#Turn off the buzzer
+def turn_off_buzzer_digitalport(port):
+    buzzer = port
+    grovepi.pinMode(buzzer,"OUTPUT")
+    grovepi.digitalWrite(buzzer,0)
     return
 
 #read temp and humidity
