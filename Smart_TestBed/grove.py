@@ -31,7 +31,19 @@ def turn_off_led_digitalport(port):
     grovepi.pinMode(led,"OUTPUT")
     grovepi.digitalWrite(led,0)
     return
+#Turn on the fan
+def turn_on_fan_digitalport(port):
+    fan = port
+    grovepi.pinMode(fan,"OUTPUT")
+    grovepi.digitalWrite(fan,255)
+    return
 
+#Turn off the fan
+def turn_off_fan_digitalport(port):
+    fan = port
+    grovepi.pinMode(fan,"OUTPUT")
+    grovepi.digitalWrite(fan,0)
+    return
 
 #read temp and humidity
 def read_temp_humidity_sensor_digitalport(port):
