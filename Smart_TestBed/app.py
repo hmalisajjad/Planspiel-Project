@@ -41,6 +41,17 @@ def stopfan():
     grove.turn_off_fan_digitalport(2) #turn off fan on d2
     return jsonify({ "message":"stopping" })
 
+#start a buzzer
+@app.route('/startbuzzer', methods=['GET','POST'])
+def startbuzzer():
+    grove.turn_on_buzzer_digitalport(5) #turn on buzzer on d5
+    return jsonify({ "message":"starting" }) #jsonify take any type and makes a JSON string
+
+#stop a buzzer
+@app.route('/stopbuzzer', methods=['GET','POST'])
+def stopbuzzer():
+    grove.turn_off_buzzer_digitalport(5) #turn off buzzer on d5
+    return jsonify({ "message":"stopping" })
 
 #return light values
 @app.route('/getlight', methods=['GET','POST'])
