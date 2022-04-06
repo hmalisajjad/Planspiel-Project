@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--Reference from: https://github.com/bradnielsen2981/grovepi-flask-->
+
+<div class="container col-md-12 h-100 " style="background-color: aqua;">
+    <div class="row">
+        <div class="card col-md-3 text-center" style="width: 18rem; margin: 5px;">
+            <div class="card-body">
+              <h5 class="card-title">Connect Components</h5>
+              <div class="btn-group-vertical">
+                <span class="border border-seceondary btn-sm btn-block" id="Led">LED</span>
+                <span class="border border-primary btn-sm btn-block" id="Fan">FAN</span>
+                <span class="border border-secondary btn-sm btn-block" id="Buzzer">BUZZER</span>
+                <span class="border border-success btn-sm btn-block" id="Loudness">LOUDNESS</span>
+                <span class="border border-danger btn-sm btn-block" id="TempHumi">TEMPERATURE & HUMIDITY</span>
+                <span class="border border-warning btn-sm btn-block" id="Motion">MOTION</span>
+                <span class="border border-info btn-sm btn-block" id="AirQuality">AIR QUALITY</span>
+                <span class="border border-light btn-sm btn-block" id="Light">LIGHT</span>
+              </div>
+              
+                            
+            </div>
+          </div>
+          <div class="card-group col-md-6 h-100">
+            <div class="card ">
+              <div class="card h-100">
+                <form name="form1" id="form1" action="/action_page.php">
+                  Components: <select name="subject" id="subject">
+                      <option value="" selected="selected">Select component</option>
+                    </select>
+                    <br><br>
+                  Components Ports: <select name="topic" id="topic">
+                      <option value="" selected="selected">Select component first</option>
+                    </select>
+                    <br><br>
+                  
+                    <button type="button" class="btn btn-success" onclick="turnon()">Run</button>
+                    <button type="button" class="btn btn-success" onclick="temphumi()">Show Output</button>
+                  </form>
+              </div>               
+              <div class="form-group shadow-textarea">
+                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Output"></textarea>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                
+                <div class="btn-group-vertical h-100">
+                  
+                  <button type="button" class="btn btn-warning btn-sm" id="LED">Led Code</button>
+                  <button type="button" class="btn btn-success btn-sm" id="FAN">Fan Code</button>
+                  <button type="button" class="btn btn-primary btn-sm" id="BUZZER">Buzzer Code</button>
+                  <button type="button" class="btn btn-success btn-sm" id="TEMPHUMI">Temperature & Humidity Code</button>
+                  <button type="button" class="btn btn-info btn-sm" id="MOTION">Motion Sensor Code</button>
+                  <button type="button" class="btn btn-warning btn-sm" id="AIR">Air Quality Code</button>
+                  <button type="button" class="btn btn-danger btn-sm" id="LOUDNESS">Loudness Code</button>
+                  <button type="button" class="btn btn-primary btn-sm" id="LIGHT">Light Code</button>
+                </div>
+                
+                
+              </div>
+          </div>
+            
+          </div>
+          <div class="card col-md-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title text-center">View Code</h5>
+              <div class="form-group shadow-textarea">
+                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="7" placeholder=""></textarea>
+              </div>
+              <button type="button" class="btn btn-success" onclick="download()">Download Code</button>
+              
+            </div>
+          </div>
+            
+            
+          </div>
+    </div>
+    
+
+
+
+
+
+
+    <!-- <div class="row">
+        <h3 id="message"></h3>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-success" onclick="JSONrequest('/start','POST')">Turn On Light</button>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-danger" onclick="JSONrequest('/stop','POST') ">Turn Off Light</button>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary" onclick="JSONrequest('/displayipaddress','POST') ">Display IP Address</button>
+    </div>
+    <br/><br/>
+    <div class="row">
+        <button type="button" class="btn btn-dark" onclick="JSONrequest('/shutdown','POST')">Shutdown Server</button>
+    </div> -->
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    var subjectObject = {
+        "LIGHT": ["D2", "D3", "D4"],
+        "FAN": ["D2", "D3", "D4"],
+
+    }
+    window.onload = function() {
+      var subjectSel = document.getElementById("subject");
+      var topicSel = document.getElementById("topic");
+      var chapterSel = document.getElementById("chapter");
+      for (var x in subjectObject) {
+        subjectSel.options[subjectSel.options.length] = new Option(x, x);
+      }
+      subjectSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    //chapterSel.length = 1;
+    // topicSel.length = 1;
+        //display correct values
+        for (var y in subjectObject[this.value]) {
+          topicSel.options[topicSel.options.length] = new Option(subjectObject[this.value][y], subjectObject[this.value][y]);
+        }
+      }
+
+    }
+    function turnon()
+    {
+
+    }
+    </script>
+{% endblock %}
