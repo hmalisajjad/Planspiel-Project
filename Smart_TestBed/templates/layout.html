@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart TestBed</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style></style>
+</head>
+
+<body style="padding:30px;font-size:16px; background-color: blue;">
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+                <a href="./logo.png" class="navbar-brand">Smart TestBed</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarCollapse2">
+                    <div class="navbar-nav">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/editor" class="nav-item nav-link">Editor</a>
+                    </div>
+                </div>
+            </nav>
+<br>
+
+    {% block content %}{% endblock %} <!-- Container for Content -->
+    <footer style="background-color: rgb(19, 92, 248);"> 
+        
+        <h6> Smart TestBed by Tech Phantoms</h6>
+
+
+        {%endfor%}
+    </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="static/jsonrequesthandler.js"></script>
+{% block scripts %}{% endblock %} <!-- Container for Scripts-->
+</body>
+</html>
