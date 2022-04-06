@@ -59,6 +59,11 @@ def stopbuzzer():
     grove.turn_off_motion_digitalport(6) #start motion on d6
     return jsonify({ "message":"starting" })
 
+#editor
+@app.route('/editor', methods=['GET','POST'])
+def editor():
+    return render_template("editor.html")
+
 #return light values
 @app.route('/getlight', methods=['GET','POST'])
 def getlight():
