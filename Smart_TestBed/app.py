@@ -56,7 +56,7 @@ def stopbuzzer():
 #detect a motion
 @app.route('/startmotion', methods=['GET','POST'])
 def startmotion():
-    grove.turn_off_motion_digitalport(6) #start motion on d6
+    grove.turn_on_motion_digitalport(6) #start motion on d6
     return jsonify({ "message":"starting" })
 
 #editor

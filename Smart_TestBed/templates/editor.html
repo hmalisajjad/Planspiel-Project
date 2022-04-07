@@ -1,45 +1,60 @@
-<!--Reference from: https://github.com/bradnielsen2981/grovepi-flask-->
+<!--Reference from: https://github.com/bradnielsen2981/grovepi-flask
+ Reference from: http://qnimate.com/create-an-frontend-editor-with-code-highlighting-and-execution/-->
 {% extends "layout.html" %}
 {% block content %}
-    <div class="container col-md-12" style="background-color: aqua;">
-        <div class="row">
-            <div class="card col-md-3" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Available Components</h5>
-                  <div class="btn-group-vertical">
-                    <span class="border border-secondary btn-sm btn-block" id="Led">LED</span>
-                    <span class="border border-primary btn-sm btn-block" id="Fan">FAN</span>
-                    <span class="border border-secondary btn-sm btn-block" id="Buzzer">BUZZER</span>
-                    <span class="border border-success btn-sm btn-block" id="Loudness">LOUDNESS</span>
-                    <span class="border border-danger btn-sm btn-block" id="TempHumi">TEMPERATURE & HUMIDITY</span>
-                    <span class="border border-warning btn-sm btn-block" id="Motion">MOTION</span>
-                    <span class="border border-info btn-sm btn-block" id="AirQuality">AIR QUALITY</span>
-                    <span class="border border-light btn-sm btn-block" id="Light">LIGHT</span>
-                  </div>
-                  
-                                
-                </div>
-              </div>
-              <div class="card col-md-3" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Please Write your code here</h5>
-                  <div class="form-group shadow-textarea">
-                    <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="10" placeholder=""></textarea>
-                  </div>
-                  <button type="button" class="btn btn-success" onclick="runEditor()">Run</button>
-                                
-                </div>
-              </div>
+<div class="container col-md-12" style="background-color: aqua;">
+  <div class="row">
+    <div class="card col-md-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Available Components</h5>
+        <div class="btn-group-vertical">
+          <span class="border border-secondary btn-sm btn-block" id="Led">LED</span>
+          <span class="border border-primary btn-sm btn-block" id="Fan">FAN</span>
+          <span class="border border-secondary btn-sm btn-block" id="Buzzer">BUZZER</span>
+          <span class="border border-success btn-sm btn-block" id="Loudness">LOUDNESS</span>
+          <span class="border border-danger btn-sm btn-block" id="TempHumi">TEMPERATURE & HUMIDITY</span>
+          <span class="border border-warning btn-sm btn-block" id="Motion">MOTION</span>
+          <span class="border border-info btn-sm btn-block" id="AirQuality">AIR QUALITY</span>
+          <span class="border border-light btn-sm btn-block" id="Light">LIGHT</span>
         </div>
-        
 
 
-        <!-- area for real time chart
-        <div id="line_chart" style="width:700px; height:300px;"></div> -->
+      </div>
     </div>
+    <div class="card col-md-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Please Write your code here</h5>
+        <div class="form-group shadow-textarea">
+          <textarea class="form-control z-depth-1" id="codeEditor" rows="10" placeholder=""></textarea>
+        </div>
+        <button type="button" class="btn btn-success" onclick="runEditor()">Run</button>
+        <iframe id="result"></iframe>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- area for real time chart
+        <div id="line_chart" style="width:700px; height:300px;"></div> -->
+</div>
 {% endblock %}
 {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="static/realtimechart.js"></script>
+<script>
+  var editor = CodeMirror.fromTextArea(document.getElementById("codeEditor"), {
+    lineNumbers: true,
+    mode: "py",
+    mode: "js"
+  });
+
+  function runEditor() {
+    editor.save();
+    var code = document.getElementById("codeEditor").value;
+    var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+    document.getElementById("result").src = data_url;
+  }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 {% endblock %}
