@@ -3,132 +3,273 @@
 <!--Reference from: https://github.com/bradnielsen2981/grovepi-flask-->
 
 <div class="container col-md-12 h-100 " style="background-color: aqua;">
-    <div class="row">
-        <div class="card col-md-3 text-center" style="width: 18rem; margin: 5px;">
-            <div class="card-body">
-              <h5 class="card-title">Connect Components</h5>
-              <div class="btn-group-vertical">
-                <span class="border border-seceondary btn-sm btn-block" id="Led">LED</span>
-                <span class="border border-primary btn-sm btn-block" id="Fan">FAN</span>
-                <span class="border border-secondary btn-sm btn-block" id="Buzzer">BUZZER</span>
-                <span class="border border-success btn-sm btn-block" id="Loudness">LOUDNESS</span>
-                <span class="border border-danger btn-sm btn-block" id="TempHumi">TEMPERATURE & HUMIDITY</span>
-                <span class="border border-warning btn-sm btn-block" id="Motion">MOTION</span>
-                <span class="border border-info btn-sm btn-block" id="AirQuality">AIR QUALITY</span>
-                <span class="border border-light btn-sm btn-block" id="Light">LIGHT</span>
-              </div>
-              
-                            
-            </div>
-          </div>
-          <div class="card-group col-md-6 h-100">
-            <div class="card ">
-              <div class="card h-100">
-                <form name="form1" id="form1" action="/action_page.php">
-                  Components: <select name="subject" id="subject">
-                      <option value="" selected="selected">Select component</option>
-                    </select>
-                    <br><br>
-                  Components Ports: <select name="topic" id="topic">
-                      <option value="" selected="selected">Select component first</option>
-                    </select>
-                    <br><br>
-                  
-                    <button type="button" class="btn btn-success" onclick="turnon()">Run</button>
-                    <button type="button" class="btn btn-success" onclick="temphumi()">Show Output</button>
-                  </form>
-              </div>               
-              <div class="form-group shadow-textarea">
-                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Output"></textarea>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                
-                <div class="btn-group-vertical h-100">
-                  
-                  <button type="button" class="btn btn-warning btn-sm" id="LED">Led Code</button>
-                  <button type="button" class="btn btn-success btn-sm" id="FAN">Fan Code</button>
-                  <button type="button" class="btn btn-primary btn-sm" id="BUZZER">Buzzer Code</button>
-                  <button type="button" class="btn btn-success btn-sm" id="TEMPHUMI">Temperature & Humidity Code</button>
-                  <button type="button" class="btn btn-info btn-sm" id="MOTION">Motion Sensor Code</button>
-                  <button type="button" class="btn btn-warning btn-sm" id="AIR">Air Quality Code</button>
-                  <button type="button" class="btn btn-danger btn-sm" id="LOUDNESS">Loudness Code</button>
-                  <button type="button" class="btn btn-primary btn-sm" id="LIGHT">Light Code</button>
-                </div>
-                
-                
-              </div>
-          </div>
-            
-          </div>
-          <div class="card col-md-3" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title text-center">View Code</h5>
-              <div class="form-group shadow-textarea">
-                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="7" placeholder=""></textarea>
-              </div>
-              <button type="button" class="btn btn-success" onclick="download()">Download Code</button>
-              
-            </div>
-          </div>
-            
-            
-          </div>
+  <div class="row">
+    <div class="card col-md-3 text-center" style="width: 18rem; margin: 5px;">
+      <div class="card-body">
+        <h5 class="card-title">Connect Components</h5>
+        <div class="btn-group-vertical" id="spanBtn">
+          <span class="border border-seceondary btn-sm btn-block" id="Led">LED</span>
+          <span class="border border-primary btn-sm btn-block" id="Fan">FAN</span>
+          <span class="border border-secondary btn-sm btn-block" id="Buzzer">BUZZER</span>
+          <span class="border border-success btn-sm btn-block" id="Loudness">LOUDNESS</span>
+          <span class="border border-danger btn-sm btn-block" id="TempHumi">TEMPERATURE & HUMIDITY</span>
+          <span class="border border-warning btn-sm btn-block" id="Motion">MOTION</span>
+          <span class="border border-info btn-sm btn-block" id="AirQuality">AIR QUALITY</span>
+          <span class="border border-light btn-sm btn-block" id="Light">LIGHT</span>
+        </div>
+
+
+      </div>
     </div>
-    
+    <div class="card-group col-md-6 h-100">
+      <div class="card ">
+        <div class="card h-100">
+          <form name="form1" id="form1" action="/action_page.php">
+            Components: <select name="component" id="component">
+              <option value="" selected="selected">Select component</option>
+            </select>
+            <br><br>
+            Components Ports: <select name="port" id="port">
+              <option value="" selected="selected">Select component first</option>
+            </select>
+            <br><br>
+
+            <button type="button" class="btn btn-success" id="btnRun" onclick="turnon()">Run</button>
+            <button type="button" class="btn btn-success" onclick="temphumi()">Show Output</button>
+          </form>
+        </div>
+        <div class="form-group shadow-textarea">
+          <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
+            placeholder="Output"></textarea>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+
+          <div class="btn-group-vertical h-100">
+
+            <button type="button" class="btn btn-warning btn-sm" onclick="showLed()" id="LED">Led Code</button>
+            <button type="button" class="btn btn-success btn-sm" onclick="showFan()" id="FAN">Fan Code</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="showBuzzer()" id="BUZZER">Buzzer Code</button>
+            <button type="button" class="btn btn-success btn-sm" onclick="showTemphumi()" id="TEMPHUMI">Temperature &
+              Humidity Code</button>
+            <button type="button" class="btn btn-info btn-sm" onclick="showMotion()" id="MOTION">Motion Sensor
+              Code</button>
+            <button type="button" class="btn btn-warning btn-sm" onclick="showAir()" id="AIR">Air Quality Code</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="showLoudness()" id="LOUDNESS">Loudness
+              Code</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="showLight()" id="LIGHT">Light Code</button>
+          </div>
 
 
+        </div>
+      </div>
 
-
-
-
-    <!-- <div class="row">
-        <h3 id="message"></h3>
     </div>
-    <div class="row">
-        <button type="button" class="btn btn-success" onclick="JSONrequest('/start','POST')">Turn On Light</button>
+    <div class="card col-md-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">View Code</h5>
+        <div class="form-group shadow-textarea">
+          <textarea class="form-control z-depth-1" id="viewcode" rows="7" placeholder=""></textarea>
+        </div>
+        <button type="button" class="btn btn-success" onclick="download()">Download Code</button>
+
+      </div>
     </div>
-    <div class="row">
-        <button type="button" class="btn btn-danger" onclick="JSONrequest('/stop','POST') ">Turn Off Light</button>
-    </div>
-    <div class="row">
-        <button type="button" class="btn btn-primary" onclick="JSONrequest('/displayipaddress','POST') ">Display IP Address</button>
-    </div>
-    <br/><br/>
-    <div class="row">
-        <button type="button" class="btn btn-dark" onclick="JSONrequest('/shutdown','POST')">Shutdown Server</button>
-    </div> -->
+
+
+  </div>
+</div>
+
 </div>
 {% endblock %}
 {% block scripts %}
 <script>
-    var subjectObject = {
-        "LIGHT": ["D2", "D3", "D4"],
-        "FAN": ["D2", "D3", "D4"],
+  var ledOnCode = `
+    def turn_on_led_digitalport(port):
+    led = port
+    grovepi.pinMode(led,"OUTPUT")
+    grovepi.digitalWrite(led,255)
+    return`;
 
+  var fanOnCode = `
+    def turn_on_fan_digitalport(port):
+    fan = port
+    grovepi.pinMode(fan,"OUTPUT")
+    grovepi.digitalWrite(fan,255)
+    return`;
+
+  var buzzerOnCode = `
+    def turn_on_buzzer_digitalport(port):
+    buzzer = port
+    grovepi.pinMode(buzzer,"OUTPUT")
+    grovepi.digitalWrite(buzzer,255)
+    return`;
+
+  var tempHumiCode = `
+  def read_temp_humidity_sensor_digitalport(port):
+    tempsensor = port
+    grovepi.pinMode(tempsensor,"INPUT")
+    temp_humidity_list = None
+    try:
+        temp_humidity_list = grovepi.dht(port,0) #0 - type blue sensor
+    except IOError: #this doesnt appear to work
+        log.error("Error in reading the temp and humidity sensor")
+    return temp_humidity_list`;
+
+  var LightOnCode = `
+    light_sensor = 0
+    led = 4
+
+    threshold = 10
+
+    grovepi.pinMode(light_sensor,"INPUT")
+    grovepi.pinMode(led,"OUTPUT")
+
+    while True:
+        try:
+            # Get sensor value
+            sensor_value = grovepi.analogRead(light_sensor)
+
+            # Calculate resistance of sensor in K
+            resistance = (float)(1023 - sensor_value) * 10 / sensor_value
+
+            if resistance > threshold:
+                # Send HIGH to switch on LED
+                grovepi.digitalWrite(led,1)
+            else:
+                # Send LOW to switch off LED
+                grovepi.digitalWrite(led,0)
+
+            print("sensor_value = %d resistance = %.2f" %(sensor_value,  resistance))
+            time.sleep(.5)
+
+        except IOError:
+            print ("Error")`;
+
+  var MotionDetectionCode = `
+  def turn_on_motion_digitalport(port, port1):
+    grovepi.pinMode(pir_sensor, "INPUT")
+    grovepi.pinMode(buzzer, "OUTPUT")
+
+    while True:
+        try:
+            led = port
+            buzzer = port1
+            # Sense motion, usually human, within the target range
+            if grovepi.digitalRead(pir_sensor):
+                grovepi.digitalWrite(led, 255)
+                grovepi.digitalWrite(buzzer, 255)
+                print
+                'Motion Detected';
+            else:
+                grovepi.digitalWrite(led, 0)
+                grovepi.digitalWrite(buzzer, 0)
+                print
+                '-';
+
+            # if your hold time is less than this, you might not see as many detections
+        time.sleep(.2)
+`;
+
+  function showLed() {
+    document.getElementById('viewcode').innerHTML = ledOnCode;
+  }
+
+  function showFan() {
+    document.getElementById('viewcode').innerHTML = fanOnCode;
+  }
+
+  function showBuzzer() {
+    document.getElementById('viewcode').innerHTML = fanOnCode;
+  }
+
+  function showLight() {
+    document.getElementById('viewcode').innerHTML = LightOnCode;
+  }
+
+  function showTemphumi() {
+    document.getElementById('viewcode').innerHTML = tempHumiCode;
+  }
+
+  function showMotion() {
+    document.getElementById('viewcode').innerHTML = MotionDetectionCode;
+  }
+
+  function download() {
+    var code = document.getElementById('viewcode').innerText;
+    code.src = "file.txt";
+  }
+
+  var componentObject = {
+    "LED": ["D2", "D3", "D4", "D5", "D6", "D7", "A0", "A1"],
+    "FAN": ["D2", "D3", "D4", "D5", "D6", "D7", "A0", "A1"],
+    "TEMPERATURE&HUMIDITY": ["D2", "D3", "D4", "D5", "D6", "D7", "A0", "A1"],
+    "MOTION": ["D2", "D3", "D4", "D5", "D6", "D7", "A0", "A1"],
+    "AIR QUALITY": ["D2", "D3", "D4", "D5", "D6", "D7", "A0", "A1"],
+    "LIGHT": ["D2", "D3", "D4", "D5", "D6", "D7", "A0", "A1"],
+    "BUZZER": ["D2", "D3", "D4", "D5", "D6", "D7", "A0", "A1"],
+
+  }
+  window.onload = function () {
+    var componentSel = document.getElementById("component");
+    var portSel = document.getElementById("port");
+    for (var x in componentObject) {
+      componentSel.options[componentSel.options.length] = new Option(x, x);
     }
-    window.onload = function() {
-      var subjectSel = document.getElementById("subject");
-      var topicSel = document.getElementById("topic");
-      var chapterSel = document.getElementById("chapter");
-      for (var x in subjectObject) {
-        subjectSel.options[subjectSel.options.length] = new Option(x, x);
+    componentSel.onchange = function () {
+      for (var y in componentObject[this.value]) {
+        portSel.options[portSel.options.length] = new Option(componentObject[this.value][y], componentObject[this.value][y]);
       }
-      subjectSel.onchange = function() {
-    //empty Chapters- and Topics- dropdowns
-    //chapterSel.length = 1;
-    // topicSel.length = 1;
-        //display correct values
-        for (var y in subjectObject[this.value]) {
-          topicSel.options[topicSel.options.length] = new Option(subjectObject[this.value][y], subjectObject[this.value][y]);
+    }
+
+  }
+  function turnon() {
+    const btnElement = document.getElementById("btnRun").innerText;
+    if (btnElement === "Run") {
+      if (componentSel == "LED" || componentSel == "FAN" || componentSel == "BUZZER") {
+        if (portSel == "D4") {
+          JSONrequest('/startled', 'POST')
+          document.getElementById("btnRun").innerHTML = stop
+          const btn = document.getElementById("Led");
+          btn.style.backgroundColor = 'green';
+        }
+        else if (portSel == "D2") {
+          JSONrequest('/startfan', 'POST')
+          document.getElementById("btnRun").innerText = "Stop"
+          const btn = document.getElementById("Fan");
+          btn.style.backgroundColor = 'green';
+        }
+        else if (portSel == "D3") {
+          JSONrequest('/gettemphumidity', 'POST')
+          document.getElementById("btnRun").innerHTML = stop
+          const btn = document.getElementById("TempHumi");
+          btn.style.backgroundColor = 'green';
+        }
+        else if (portSel == "D5") {
+          JSONrequest('/startbuzzer', 'POST')
+          document.getElementById("btnRun").innerHTML = stop
+          const btn = document.getElementById("Buzzer");
+          btn.style.backgroundColor = 'green';
+        }
+        else if (portSel == "A0") {
+          JSONrequest('/getlight', 'POST')
+          document.getElementById("btnRun").innerHTML = stop
+          const btn = document.getElementById("Light");
+          btn.style.backgroundColor = 'green';
+
         }
       }
-
     }
-    function turnon()
-    {
-
+    else {
+      JSONrequest('/stopled', 'POST')
+      JSONrequest('/stopfan', 'POST')
+      JSONrequest('/stopbuzzer', 'POST')
+      document.getElementById("btnRun").innerText = "Run"
+      const btn = document.getElementById("spanBtn");
+      btn.style.backgroundColor = none;
     }
-    </script>
+  }
+
+</script>
 {% endblock %}

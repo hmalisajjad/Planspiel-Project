@@ -55,12 +55,12 @@ def stopbuzzer():
 
 #detect a motion
 @app.route('/startmotion', methods=['GET','POST'])
-def stopbuzzer():
+def startmotion():
     grove.turn_off_motion_digitalport(6) #start motion on d6
     return jsonify({ "message":"starting" })
 
 #editor
-@app.route('/editor', methods=['GET','POST'])
+@app.route('/editor/', methods=['GET','POST'])
 def editor():
     return render_template("editor.html")
 
