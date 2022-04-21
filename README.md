@@ -1,5 +1,3 @@
-![2022-03-21-174727_1280x720_scrot](https://user-images.githubusercontent.com/70126786/164545840-905214ac-5c00-4893-9eae-32202c6d8617.png)
-![2022-03-21-174902_1280x720_scrot](https://user-images.githubusercontent.com/70126786/164545849-2478ee1f-0aa0-491e-b618-b2179e3eb808.png)
 # TechPhantoms
 
 We provide futuristic smart solutions.
@@ -11,3 +9,5 @@ We are providing an idea in a portable product for researchers and students whic
 ##Grove Pi The Grove Pi makes connecting the Raspberry Pi to sensors and actuators quite simple as students do not need to consider circuit diagrams. Seeed Studios and Dexter Industries have some great code snippets and projects on their respective Githubs. This sample takes much of its Grove Pi code from those samples.
 
 ##Flask Flask is a great little Python Web Server, and is perfect for students because they are already programming Python on the Raspberry Pis. I like Flask better than Django because it clearly shows students url request handlers and the methods of sending or receiving data.
+![2022-03-21-174727_1280x720_scrot](https://user-images.githubusercontent.com/70126786/164546508-810ecab5-8105-4c30-a8ef-905f72a4024d.png)
+![2022-03-21-174902_1280x720_scrot](https://user-images.githubusercontent.com/70126786/164546510-1d3c7139-9df4-439d-b7b2-388feba05bfd.png)
