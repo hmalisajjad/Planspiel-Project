@@ -1,4 +1,4 @@
-# TechPhantoms
+# Planspiel Project
 
 We provide futuristic smart solutions.
 
